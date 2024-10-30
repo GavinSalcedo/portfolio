@@ -15,12 +15,16 @@ export default function Home() {
   }) {
     return (
       <li onClick={() => setActiveLink(index)}>
-        <a className="group flex items-center py-3">
-          {/* <span className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none" /> */}
+        <a
+          className={`group flex items-center py-3 cursor-pointer hover:text-slate-200 ${
+            isActive ? 'text-slate-200' : 'text-slate-500'
+          }`}
+        >
           <span
-            className={`nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 
-              ${isActive ? 'w-16 bg-slate-200' : ''} motion-reduce:transition-none`}
+            className={`nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-20 group-hover:bg-slate-200 
+    ${isActive ? '!w-20 !bg-slate-200' : ''} motion-reduce:transition-none`}
           />
+
           <span>{label}</span>
         </a>
       </li>
@@ -47,7 +51,7 @@ export default function Home() {
 
       <main className="w-1/3 lg:pb-24">
         <section>
-          <div className="font-semibold	text-slate-500 text-justify">
+          <div className="font-semibold text-slate-500 text-justify">
             <p className="mb-4">
               Back in 2012, I decided to try my hand at creating custom Tumblr
               themes and tumbled head first into the rabbit hole of coding and
@@ -79,7 +83,7 @@ export default function Home() {
             <p className="mb-4">
               When I’m not at the computer, I’m usually rock climbing, reading,
               hanging out with my wife and two cats, or running around Hyrule
-              searching for Korok seeds Korokseeds.
+              searching for Korok seeds.
             </p>
           </div>
         </section>
