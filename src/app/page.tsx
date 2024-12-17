@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import CardContainer from './components/CardContainer'
 
 export default function Home() {
   const [activeLink, setActiveLink] = useState(0)
@@ -32,9 +33,9 @@ export default function Home() {
   }
 
   return (
-    <div className="flex justify-evenly gap-20">
+    <div className="flex justify-evenly gap-24">
       <header>
-        <h1 className="text-4xl font-bold">Gavilan Salcedo</h1>
+        <h1 className="text-5xl font-bold">Gavilan Salcedo</h1>
         <h2 className="mt-3 text-lg">Frontend Engineer</h2>
         <p className="mt-4 max-w-xs text-slate-500">
           I build pixel-perfect, engaging and accessible digital experiences.
@@ -49,7 +50,7 @@ export default function Home() {
         </nav>
       </header>
 
-      <main className="w-1/3 lg:pb-24">
+      <main className="w-2/5 lg:pb-24">
         <section>
           <div className="font-semibold text-slate-500 text-justify">
             <p className="mb-4">
@@ -86,6 +87,28 @@ export default function Home() {
               searching for Korok seeds.
             </p>
           </div>
+        </section>
+
+        <section>
+          <CardContainer>
+            <div className="flex gap-10">
+              <label className="mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 ">
+                2024 - PRESENT
+              </label>
+              <div>
+                <label className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300  group/link text-base">
+                  Frontend Engineer
+                </label>
+                <p className="text-slate-500">
+                  Build and maintain critical components used to construct
+                  Klaviyo’s frontend, across the whole product. Work closely
+                  with cross-functional teams, including developers, designers,
+                  and product managers, to implement and advocate for best
+                  practices in web accessibility.
+                </p>
+              </div>
+            </div>
+          </CardContainer>
         </section>
       </main>
     </div>
