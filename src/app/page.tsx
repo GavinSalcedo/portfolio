@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import CardContainer from './components/CardContainer'
+import Tags from './components/Tags'
 
 export default function Home() {
   const [activeLink, setActiveLink] = useState(0)
@@ -50,7 +51,7 @@ export default function Home() {
         </nav>
       </header>
 
-      <main className="w-2/5 lg:pb-24">
+      <main className="w-3/6 lg:pb-24">
         <section>
           <div className="font-semibold text-slate-500 text-justify">
             <p className="mb-4">
@@ -92,12 +93,12 @@ export default function Home() {
         <section>
           <CardContainer>
             <div className="flex gap-10">
-              <label className="mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 ">
-                2024 - PRESENT
+              <label className="w-3/4 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 ">
+                Aug 2023 - Aug 2024
               </label>
-              <div>
+              <div className="flex flex-col gap-3">
                 <label className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300  group/link text-base">
-                  Frontend Engineer
+                  Next.js Developer | Frontend Engineer
                 </label>
                 <p className="text-slate-500">
                   Build and maintain critical components used to construct
@@ -106,6 +107,13 @@ export default function Home() {
                   and product managers, to implement and advocate for best
                   practices in web accessibility.
                 </p>
+                <ul className="w-fit flex gap-2 flex-wrap">
+                  <Tags label="JavaScript" />
+                  <Tags label="TypeScript" />
+                  <Tags label="Storybook" />
+                  <Tags label="GraphQL" />
+                  <Tags label="Jest" />
+                </ul>
               </div>
             </div>
           </CardContainer>
