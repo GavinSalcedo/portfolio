@@ -8,7 +8,7 @@ export default function Home() {
 
   return (
     <div className="flex justify-evenly gap-24">
-      <header>
+      <header className="sticky top-0 self-start py-6">
         <h1 className="text-5xl font-bold">Gavilan Salcedo</h1>
         <h2 className="mt-3 text-lg">Frontend Engineer</h2>
         <p className="mt-4 max-w-xs text-slate-500">
@@ -91,6 +91,41 @@ export default function Home() {
                   and product managers, to implement and advocate for best
                   practices in web accessibility."
             tags={['JavaScript', 'TypeScript', 'Storybook', 'GraphQL', 'Jest']}
+          />
+
+          <JobCards
+            dateRange="January 2021 - August 2023"
+            jobPosition="Frontend Developer | Software Engineer"
+            body="Build and maintain critical components used to construct
+                  Klaviyo’s frontend, across the whole product. Work closely
+                  with cross-functional teams, including developers, designers,
+                  and product managers, to implement and advocate for best
+                  practices in web accessibility."
+            tags={[
+              'JavaScript',
+              'TypeScript',
+              'Storybook',
+              'GraphQL',
+              'Styled Components',
+            ]}
+          />
+
+          <JobCards
+            dateRange="January 2020 - January 2021 "
+            jobPosition="Junior Frontend Developer"
+            body="Build and maintain critical components used to construct
+                  Klaviyo’s frontend, across the whole product. Work closely
+                  with cross-functional teams, including developers, designers,
+                  and product managers, to implement and advocate for best
+                  practices in web accessibility."
+            tags={[
+              'JavaScript',
+              'TypeScript',
+              'Storybook',
+              'GraphQL',
+              'MongoDB',
+              'Figma',
+            ]}
           />
         </section>
       </main>
