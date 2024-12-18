@@ -1,36 +1,10 @@
 'use client'
 import { useState } from 'react'
 import JobCards from './components/JobCards'
+import NavItem from './components/Navitem'
 
 export default function Home() {
   const [activeLink, setActiveLink] = useState(0)
-
-  function NavItem({
-    label,
-    isActive,
-    index,
-  }: {
-    label: string
-    isActive: boolean
-    index: number
-  }) {
-    return (
-      <li onClick={() => setActiveLink(index)}>
-        <a
-          className={`group flex items-center py-3 cursor-pointer hover:text-slate-200 ${
-            isActive ? 'text-slate-200' : 'text-slate-500'
-          }`}
-        >
-          <span
-            className={`nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-20 group-hover:bg-slate-200 
-    ${isActive ? '!w-20 !bg-slate-200' : ''} motion-reduce:transition-none`}
-          />
-
-          <span>{label}</span>
-        </a>
-      </li>
-    )
-  }
 
   return (
     <div className="flex justify-evenly gap-24">
@@ -43,9 +17,24 @@ export default function Home() {
 
         <nav className="mt-16">
           <ul>
-            <NavItem label="About" isActive={activeLink === 0} index={0} />
-            <NavItem label="Experience" isActive={activeLink === 1} index={1} />
-            <NavItem label="Projects" isActive={activeLink === 2} index={2} />
+            <NavItem
+              label="About"
+              isActive={activeLink === 0}
+              index={0}
+              setActiveLink={setActiveLink}
+            />
+            <NavItem
+              label="Experience"
+              isActive={activeLink === 1}
+              index={1}
+              setActiveLink={setActiveLink}
+            />
+            <NavItem
+              label="Projects"
+              isActive={activeLink === 2}
+              index={2}
+              setActiveLink={setActiveLink}
+            />
           </ul>
         </nav>
       </header>
