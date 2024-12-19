@@ -188,6 +188,23 @@ export default function Home() {
                 ]}
                 link="https://fasttrackph.com/"
               />
+              <JobCards
+                dateRange="Jul 2019 - Oct 2019"
+                jobPosition="Marketing Intern | Support Associate"
+                body="Build and maintain critical components used to construct
+                  Klaviyo’s frontend, across the whole product. Work closely
+                  with cross-functional teams, including developers, designers,
+                  and product managers, to implement and advocate for best
+                  practices in web accessibility."
+                tags={[
+                  'Facebook',
+                  'Instagram',
+                  'Twitter',
+                  'Admin Task',
+                  'Chat Support',
+                ]}
+                link="https://fasttrackph.com/"
+              />
             </section>
             <div>
               <Link
