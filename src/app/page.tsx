@@ -73,7 +73,7 @@ export default function Home() {
 
         <section>
           <JobCards
-            dateRange="September - November 2024"
+            dateRange="Sep - Nov 2024"
             jobPosition="Freelance Team Lead"
             body="Build and maintain critical components used to construct
                   Klaviyo’s frontend, across the whole product. Work closely
@@ -84,7 +84,7 @@ export default function Home() {
           />
 
           <JobCards
-            dateRange="August 2023 - August 2024"
+            dateRange="Aug 2023 - Aug 2024"
             jobPosition="Frontend Developer | Next.js Developer"
             body="Build and maintain critical components used to construct
                   Klaviyo’s frontend, across the whole product. Work closely
@@ -95,7 +95,7 @@ export default function Home() {
           />
 
           <JobCards
-            dateRange="January 2021 - August 2023"
+            dateRange="Jan 2021 - Aug 2023"
             jobPosition="Frontend Developer | Software Engineer"
             body="Build and maintain critical components used to construct
                   Klaviyo’s frontend, across the whole product. Work closely
@@ -112,7 +112,7 @@ export default function Home() {
           />
 
           <JobCards
-            dateRange="January 2020 - January 2021 "
+            dateRange="Jan 2020 - Jan 2021 "
             jobPosition="Junior Frontend Developer"
             body="Build and maintain critical components used to construct
                   Klaviyo’s frontend, across the whole product. Work closely
