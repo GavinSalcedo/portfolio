@@ -1,11 +1,28 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import JobCards from './components/JobCards'
 import NavItem from './components/Navitem'
 import Link from 'next/link'
 
 export default function Home() {
   const [activeLink, setActiveLink] = useState(0)
+  const [offset, setOffset] = useState(0)
+
+  useEffect(() => {
+    window.onscroll = () => {
+      setOffset(window.scrollY)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (offset >= 0) {
+      setActiveLink(0)
+    }
+
+    if (offset >= 400) {
+      setActiveLink(1)
+    }
+  }, [offset])
 
   return (
     <div className="flex justify-evenly gap-24">
