@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import JobCards from './components/JobCards'
 import NavItem from './components/Navitem'
+import Link from 'next/link'
 
 export default function Home() {
   const [activeLink, setActiveLink] = useState(0)
@@ -128,6 +129,16 @@ export default function Home() {
             ]}
           />
         </section>
+        <div>
+          <Link
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            locale={false}
+          >
+            View My Resume
+          </Link>
+        </div>
       </main>
     </div>
   )
