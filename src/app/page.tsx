@@ -30,7 +30,7 @@ export default function Home() {
         <h1 className="text-5xl font-bold">Gavilan Salcedo</h1>
         <h2 className="mt-3 text-lg">Frontend Engineer</h2>
         <p className="mt-4 max-w-xs text-slate-500">
-          I build pixel-perfect, engaging and accessible digital experiences.
+          I write and copy code from the internet and somehow it works.
         </p>
 
         <nav className="mt-16">
@@ -98,6 +98,7 @@ export default function Home() {
                   and product managers, to implement and advocate for best
                   practices in web accessibility."
             tags={['JavaScript', 'TypeScript', 'Code Review', 'Node.js']}
+            link="https://www.projectneo.dev/"
           />
 
           <JobCards
@@ -109,6 +110,7 @@ export default function Home() {
                   and product managers, to implement and advocate for best
                   practices in web accessibility."
             tags={['JavaScript', 'TypeScript', 'Storybook', 'GraphQL', 'Jest']}
+            link="https://www.accelo.com/"
           />
 
           <JobCards
@@ -126,6 +128,7 @@ export default function Home() {
               'GraphQL',
               'Styled Components',
             ]}
+            link="https://stratpoint.com/"
           />
 
           <JobCards
@@ -144,6 +147,7 @@ export default function Home() {
               'MongoDB',
               'Figma',
             ]}
+            link="https://fasttrackph.com/"
           />
         </section>
         <div>
