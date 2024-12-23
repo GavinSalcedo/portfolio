@@ -1,8 +1,19 @@
 import JobCards from './components/JobCards'
 import Link from 'next/link'
 import Header from './components/Header'
+import Job from './types/Jobs'
 
-export default function Home() {
+export default async function Home() {
+  const jobData = await fetch(
+    'https://portfolio-cms-gules.vercel.app/api/jobs',
+    {
+      headers: {
+        'Cache-Control': 'no-store',
+      },
+    },
+  )
+  const JOBS = await jobData.json()
+
   return (
     <>
       <div className="mx-auto min-h-screen max-w-screen-xl font-sans md:px-12 md:py-16 lg:py-0">
@@ -51,89 +62,16 @@ export default function Home() {
               id="experience"
               className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
             >
-              <JobCards
-                dateRange="Sep - Nov 2024"
-                jobPosition="Freelance Team Lead"
-                body="Build and maintain critical components used to construct
-                  Klaviyo’s frontend, across the whole product. Work closely
-                  with cross-functional teams, including developers, designers,
-                  and product managers, to implement and advocate for best
-                  practices in web accessibility."
-                tags={['JavaScript', 'TypeScript', 'Code Review', 'Node.js']}
-                link="https://www.projectneo.dev/"
-              />
-
-              <JobCards
-                dateRange="Aug 2023 - Aug 2024"
-                jobPosition="Frontend Developer | Next.js Developer"
-                body="Build and maintain critical components used to construct
-                  Klaviyo’s frontend, across the whole product. Work closely
-                  with cross-functional teams, including developers, designers,
-                  and product managers, to implement and advocate for best
-                  practices in web accessibility."
-                tags={[
-                  'JavaScript',
-                  'TypeScript',
-                  'Storybook',
-                  'GraphQL',
-                  'Jest',
-                ]}
-                link="https://www.accelo.com/"
-              />
-
-              <JobCards
-                dateRange="Jan 2021 - Aug 2023"
-                jobPosition="Frontend Developer | Software Engineer"
-                body="Build and maintain critical components used to construct
-                  Klaviyo’s frontend, across the whole product. Work closely
-                  with cross-functional teams, including developers, designers,
-                  and product managers, to implement and advocate for best
-                  practices in web accessibility."
-                tags={[
-                  'JavaScript',
-                  'TypeScript',
-                  'Storybook',
-                  'GraphQL',
-                  'Styled Components',
-                ]}
-                link="https://stratpoint.com/"
-              />
-
-              <JobCards
-                dateRange="Jan 2020 - Jan 2021 "
-                jobPosition="Junior Frontend Developer"
-                body="Build and maintain critical components used to construct
-                  Klaviyo’s frontend, across the whole product. Work closely
-                  with cross-functional teams, including developers, designers,
-                  and product managers, to implement and advocate for best
-                  practices in web accessibility."
-                tags={[
-                  'JavaScript',
-                  'TypeScript',
-                  'Storybook',
-                  'GraphQL',
-                  'MongoDB',
-                  'Figma',
-                ]}
-                link="https://fasttrackph.com/"
-              />
-              <JobCards
-                dateRange="Jul 2019 - Oct 2019"
-                jobPosition="Marketing Intern | Support Associate"
-                body="Build and maintain critical components used to construct
-                  Klaviyo’s frontend, across the whole product. Work closely
-                  with cross-functional teams, including developers, designers,
-                  and product managers, to implement and advocate for best
-                  practices in web accessibility."
-                tags={[
-                  'Facebook',
-                  'Instagram',
-                  'Twitter',
-                  'Admin Task',
-                  'Chat Support',
-                ]}
-                link="https://fasttrackph.com/"
-              />
+              {JOBS.docs.map((job: Job, idx: number) => (
+                <JobCards
+                  key={`job_${idx}`}
+                  dateRange={job.yearRange}
+                  body={job.description}
+                  jobPosition={job.position}
+                  tags={job.tags}
+                  link={job.link}
+                />
+              ))}
             </section>
             <div>
               <Link

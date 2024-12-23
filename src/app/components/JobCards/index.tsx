@@ -27,7 +27,7 @@ function JobCards(props: JobCardsProps) {
             </label>
             <p className="text-slate-500">{body}</p>
             <ul className="w-fit flex gap-2 flex-wrap">
-              {tags.map((tag, idx) => (
+              {tags?.map((tag, idx) => (
                 <Tags key={`${tag}_${idx}`} label={tag} />
               ))}
             </ul>
