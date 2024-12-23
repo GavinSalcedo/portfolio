@@ -3,6 +3,8 @@ import Link from 'next/link'
 import Header from './components/Header'
 import Job from './types/Jobs'
 
+export const dynamic = 'force-dynamic'
+
 export default async function Home() {
   const jobData = await fetch(
     'https://portfolio-cms-gules.vercel.app/api/jobs',
@@ -13,6 +15,7 @@ export default async function Home() {
     },
   )
   const JOBS = await jobData.json()
+  console.log(JOBS) // Check the fetched data here
 
   return (
     <>
