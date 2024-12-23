@@ -6,7 +6,7 @@ import Tags from './types/Tags'
 
 async function fetchTagNames(tagIds: Tags[]) {
   const tagPromises = tagIds.map((tag) =>
-    fetch(`${process.env.PUBLIC_API_URL}/tags/${tag.id}`)
+    fetch(`https://portfolio-cms-gules.vercel.app/api/tags/${tag.id}`)
       .then((res) => res.json())
       .then((tag) => tag.name),
   )
@@ -14,12 +14,15 @@ async function fetchTagNames(tagIds: Tags[]) {
 }
 
 export default async function Home() {
-  const jobData = await fetch(`${process.env.PUBLIC_API_URL}/jobs`, {
-    headers: {
-      'Cache-Control': 'no-store',
+  const jobData = await fetch(
+    `https://portfolio-cms-gules.vercel.app/api/jobs`,
+    {
+      headers: {
+        'Cache-Control': 'no-store',
+      },
+      next: { revalidate: 60 },
     },
-    next: { revalidate: 60 },
-  })
+  )
   const JOBS = await jobData.json()
 
   const jobsWithTags = await Promise.all(
@@ -28,6 +31,7 @@ export default async function Home() {
       tags: await fetchTagNames(job.tags), // Fetch tag names by IDs
     })),
   )
+  console.log(jobsWithTags, 'jobs with tags')
 
   return (
     <>
@@ -83,7 +87,7 @@ export default async function Home() {
                   dateRange={job.yearRange}
                   body={job.description}
                   jobPosition={job.position}
-                  tags={job.tags} // Already resolved names
+                  tags={job.tags as any} // Already resolved names
                   link={job.link}
                 />
               ))}

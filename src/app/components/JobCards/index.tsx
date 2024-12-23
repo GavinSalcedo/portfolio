@@ -2,13 +2,13 @@ import React from 'react'
 import CardContainer from '../CardContainer'
 import TagsComponent from '../Tags'
 import Link from 'next/link'
-import Tags from '@/app/types/Tags'
+// import Tags from '@/app/types/Tags'
 
 interface JobCardsProps {
   dateRange: string
   jobPosition: string
   body: string
-  tags: Tags[]
+  tags: string[]
   link?: string
 }
 
@@ -29,7 +29,7 @@ function JobCards(props: JobCardsProps) {
             <p className="text-slate-500">{body}</p>
             <ul className="w-fit flex gap-2 flex-wrap">
               {tags?.map((tag, idx) => (
-                <TagsComponent key={`${tag}_${idx}`} label={tag.name} />
+                <TagsComponent key={`${tag}_${idx}`} label={tag} />
               ))}
             </ul>
           </div>
