@@ -56,10 +56,20 @@ function Header() {
         </nav>
       </div>
       <ul className="ml-1 mt-8 flex items-center">
-        <li className="mr-5 shrink-0 text-xs">
+        <li
+          className="mr-5 shrink-0 text-xs cursor-pointer"
+          onClick={() =>
+            window.location.replace('https://github.com/GavinSalcedo')
+          }
+        >
           <Image alt="Github" src="/icons/github.png" width={24} height={24} />
         </li>
-        <li>
+        <li
+          className="cursor-pointer"
+          onClick={() =>
+            window.location.replace('https://www.linkedin.com/in/goodguygavi/')
+          }
+        >
           <Image
             alt="LinkedIn"
             src="/icons/linkedin.png"
