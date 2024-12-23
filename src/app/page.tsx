@@ -1,9 +1,9 @@
+// export const dynamic = 'force-dynamic'
+
 import JobCards from './components/JobCards'
 import Link from 'next/link'
 import Header from './components/Header'
 import Job from './types/Jobs'
-
-export const dynamic = 'force-dynamic'
 
 export default async function Home() {
   const jobData = await fetch(
@@ -12,6 +12,7 @@ export default async function Home() {
       headers: {
         'Cache-Control': 'no-store',
       },
+      next: { revalidate: 60 },
     },
   )
   const JOBS = await jobData.json()
