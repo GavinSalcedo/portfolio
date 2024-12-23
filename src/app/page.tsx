@@ -16,7 +16,6 @@ export default async function Home() {
     },
   )
   const JOBS = await jobData.json()
-  console.log(JOBS) // Check the fetched data here
 
   return (
     <>
