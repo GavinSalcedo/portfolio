@@ -14,7 +14,7 @@ async function fetchTagNames(tagIds: Tags[]) {
 }
 
 export default async function Home() {
-  const jobData = await fetch(`http://localhost:3001/api/jobs`, {
+  const jobData = await fetch(`${process.env.PUBLIC_API_URL}/jobs`, {
     headers: {
       'Cache-Control': 'no-store',
     },
