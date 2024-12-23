@@ -67,8 +67,7 @@ export default async function Home() {
                 </p>
                 <p className="mb-16">
                   When I’m not coding, you’ll probably find me at the gym ,
-                  tinkering with side projects (like a URL shortener app or
-                  wedding invites for friends), or geeking out over Next.js and{' '}
+                  tinkering with side projects, or geeking out over Next.js and{' '}
                   <a className="text-slate-200">TypeScript</a> . I’m always up
                   for a challenge, whether it’s figuring out a tricky CI/CD
                   pipeline or optimizing some gnarly piece of UI.
