@@ -1,21 +1,33 @@
-// export const dynamic = 'force-dynamic'
-
 import JobCards from './components/JobCards'
 import Link from 'next/link'
 import Header from './components/Header'
 import Job from './types/Jobs'
+import Tags from './types/Tags'
+
+async function fetchTagNames(tagIds: Tags[]) {
+  const tagPromises = tagIds.map((tag) =>
+    fetch(`${process.env.PUBLIC_API_URL}/tags/${tag.id}`)
+      .then((res) => res.json())
+      .then((tag) => tag.name),
+  )
+  return Promise.all(tagPromises)
+}
 
 export default async function Home() {
-  const jobData = await fetch(
-    'https://portfolio-cms-gules.vercel.app/api/jobs',
-    {
-      headers: {
-        'Cache-Control': 'no-store',
-      },
-      next: { revalidate: 60 },
+  const jobData = await fetch(`http://localhost:3001/api/jobs`, {
+    headers: {
+      'Cache-Control': 'no-store',
     },
-  )
+    next: { revalidate: 60 },
+  })
   const JOBS = await jobData.json()
+
+  const jobsWithTags = await Promise.all(
+    JOBS.docs.map(async (job: Job) => ({
+      ...job,
+      tags: await fetchTagNames(job.tags), // Fetch tag names by IDs
+    })),
+  )
 
   return (
     <>
@@ -65,13 +77,13 @@ export default async function Home() {
               id="experience"
               className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
             >
-              {JOBS.docs.map((job: Job, idx: number) => (
+              {jobsWithTags.map((job: Job, idx: number) => (
                 <JobCards
                   key={`job_${idx}`}
                   dateRange={job.yearRange}
                   body={job.description}
                   jobPosition={job.position}
-                  tags={job.tags}
+                  tags={job.tags} // Already resolved names
                   link={job.link}
                 />
               ))}
