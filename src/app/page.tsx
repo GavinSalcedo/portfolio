@@ -31,7 +31,6 @@ export default async function Home() {
       tags: await fetchTagNames(job.tags), // Fetch tag names by IDs
     })),
   )
-  console.log(jobsWithTags, 'jobs with tags')
 
   return (
     <>
