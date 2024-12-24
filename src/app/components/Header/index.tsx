@@ -14,12 +14,19 @@ function Header() {
   }, [])
 
   useEffect(() => {
-    if (offset >= 0) {
+    const viewportHeight = window.innerHeight
+    const documentHeight = document.documentElement.scrollHeight
+
+    if (offset >= 0 && offset + viewportHeight < documentHeight - 50) {
       setActiveLink(0)
     }
 
-    if (offset >= 400) {
+    if (offset >= 400 && offset + viewportHeight < documentHeight - 50) {
       setActiveLink(1)
+    }
+
+    if (offset + viewportHeight >= documentHeight - 50) {
+      setActiveLink(2) // Example: Trigger action for bottom scroll
     }
   }, [offset])
 
@@ -47,7 +54,7 @@ function Header() {
               setActiveLink={setActiveLink}
             />
             <NavItem
-              label="Projects"
+              label="Blogs"
               isActive={activeLink === 2}
               index={2}
               setActiveLink={setActiveLink}

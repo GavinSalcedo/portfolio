@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Job from './types/Jobs'
 import Tags from './types/Tags'
 import BlogCards from './components/BlogCards'
+import Blogs from './types/Blogs'
 
 async function fetchTagNames(tagIds: Tags[]) {
   const tagPromises = tagIds.map((tag) =>
@@ -32,6 +33,12 @@ export default async function Home() {
       tags: await fetchTagNames(job.tags), // Fetch tag names by IDs
     })),
   )
+
+  const blogData = await fetch(`http://localhost:3001/api/blogs`, {
+    next: { revalidate: 60 },
+  })
+
+  const BLOGS = await blogData.json()
 
   return (
     <>
@@ -78,7 +85,7 @@ export default async function Home() {
 
             <section
               id="experience"
-              className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+              className=" scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
             >
               {jobsWithTags.map((job: Job, idx: number) => (
                 <JobCards
@@ -101,12 +108,16 @@ export default async function Home() {
                 View My Resume
               </Link>
             </div>
-            <section id="blogs">
-              <BlogCards
-                blogPhoto=" https://w7.pngwing.com/pngs/327/766/png-transparent-old-school-runescape-youtube-elf-random-icons-child-face-hand-thumbnail.png"
-                date="December 20224"
-                title="Why is Semantic HTMl important?"
-              />
+            <section id="blogs" className="mt-16">
+              {BLOGS.docs?.map((blog: Blogs, idx: number) => (
+                <BlogCards
+                  key={`blog_${idx}`}
+                  blogPhoto={`${process.env.API_URL}${blog.blogPhoto.url}`}
+                  date={blog.title}
+                  title={blog.description}
+                  link={blog.link}
+                />
+              ))}
             </section>
           </main>
         </div>
