@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Header from './components/Header'
 import Job from './types/Jobs'
 import Tags from './types/Tags'
+import BlogCards from './components/BlogCards'
 
 async function fetchTagNames(tagIds: Tags[]) {
   const tagPromises = tagIds.map((tag) =>
@@ -100,6 +101,13 @@ export default async function Home() {
                 View My Resume
               </Link>
             </div>
+            <section id="blogs">
+              <BlogCards
+                blogPhoto=" https://w7.pngwing.com/pngs/327/766/png-transparent-old-school-runescape-youtube-elf-random-icons-child-face-hand-thumbnail.png"
+                date="December 20224"
+                title="Why is Semantic HTMl important?"
+              />
+            </section>
           </main>
         </div>
       </div>
