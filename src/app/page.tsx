@@ -4,7 +4,6 @@ import Header from './components/Header'
 import Job from './types/Jobs'
 import Tags from './types/Tags'
 import BlogCards from './components/BlogCards'
-import Blogs from './types/Blogs'
 
 async function fetchTagNames(tagIds: Tags[]) {
   const tagPromises = tagIds.map((tag) =>
@@ -30,12 +29,6 @@ export default async function Home() {
       tags: await fetchTagNames(job.tags), // Fetch tag names by IDs
     })),
   )
-
-  const blogData = await fetch(`${process.env.API_URL}/api/blogs`, {
-    next: { revalidate: 60 },
-  })
-
-  const BLOGS = await blogData.json()
 
   return (
     <>
@@ -106,15 +99,12 @@ export default async function Home() {
               </Link>
             </div>
             <section id="blogs" className="mt-16">
-              {BLOGS.docs?.map((blog: Blogs, idx: number) => (
-                <BlogCards
-                  key={`blog_${idx}`}
-                  blogPhoto={`${process.env.API_URL}${blog.blogPhoto.url}`}
-                  date={blog.title}
-                  title={blog.description}
-                  link={blog.link}
-                />
-              ))}
+              <BlogCards
+                blogPhoto="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Zdcpe1oOwoVUgC-oggCASw.jpeg"
+                date="December 2024"
+                title="Why is Semantic HTML important?"
+                link="https://dev.to/gavilan_salcedo_86713d79f/why-semantic-html-is-important-4o1e"
+              />
             </section>
           </main>
         </div>
