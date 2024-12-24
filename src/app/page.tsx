@@ -16,15 +16,12 @@ async function fetchTagNames(tagIds: Tags[]) {
 }
 
 export default async function Home() {
-  const jobData = await fetch(
-    `https://portfolio-cms-gules.vercel.app/api/jobs`,
-    {
-      headers: {
-        'Cache-Control': 'no-store',
-      },
-      next: { revalidate: 60 },
+  const jobData = await fetch(`${process.env.API_URL}/api/jobs`, {
+    headers: {
+      'Cache-Control': 'no-store',
     },
-  )
+    next: { revalidate: 60 },
+  })
   const JOBS = await jobData.json()
 
   const jobsWithTags = await Promise.all(
@@ -34,7 +31,7 @@ export default async function Home() {
     })),
   )
 
-  const blogData = await fetch(`http://localhost:3001/api/blogs`, {
+  const blogData = await fetch(`${process.env.API_URL}/api/blogs`, {
     next: { revalidate: 60 },
   })
 
